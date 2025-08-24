@@ -1,5 +1,8 @@
 {
   "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
   "headers": [
     {
       "source": "/(.*)",
@@ -11,8 +14,17 @@
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  }
 }

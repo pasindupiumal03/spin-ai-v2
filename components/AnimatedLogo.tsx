@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 
 interface AnimatedLogoProps {
   className?: string;
@@ -11,27 +10,20 @@ interface AnimatedLogoProps {
 const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ className = "", size = 40 }) => {
   return (
     <div className={`relative ${className}`} style={{ width: size, height: size }}>
-      <motion.div
-        className="absolute inset-0 rounded-full bg-lime-400"
-        initial={{ scale: 0.6, opacity: 0.5 }}
-        animate={{ 
-          scale: [0.6, 0.8, 0.6],
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
+      {/* Pulsing background circle */}
+      <div 
+        className="absolute inset-0 rounded-full bg-lime-400 animate-pulse"
+        style={{
+          animation: 'logoGlow 2s ease-in-out infinite',
+          opacity: 0.5
         }}
       />
-      <motion.div
+      
+      {/* Rotating logo */}
+      <div
         className="absolute inset-0 flex items-center justify-center"
-        initial={{ rotate: 0 }}
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "linear"
+        style={{
+          animation: 'logoSpin 8s linear infinite'
         }}
       >
         <img
@@ -39,7 +31,29 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ className = "", size = 40 }
           alt="Spin Logo"
           className="w-full h-full object-contain"
         />
-      </motion.div>
+      </div>
+
+      <style jsx>{`
+        @keyframes logoGlow {
+          0%, 100% {
+            transform: scale(0.6);
+            opacity: 0.5;
+          }
+          50% {
+            transform: scale(0.8);
+            opacity: 0.8;
+          }
+        }
+
+        @keyframes logoSpin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 };
