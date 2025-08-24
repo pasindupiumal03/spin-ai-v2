@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --accent-color: 132 204 22; /* lime-500 */
+    --accent-hover: 163 230 53; /* lime-400 */
+  }
+
+  /* Light Theme */
+  .theme-light {
+    --background: 255 255 255;
+    --foreground: 0 0 0;
+    --card: 255 255 255;
+    --card-foreground: 0 0 0;
+    --accent-color: 59 130 246; /* blue-500 */
+    --accent-hover: 96 165 250; /* blue-400 */
+  }
+  
+  /* Dark Theme */
+  .dark, .theme-dark {
+    --background: 0 0 0;
+    --foreground: 255 255 255;
+    --card: 15 15 15;
+    --card-foreground: 255 255 255;
+    --accent-color: 132 204 22; /* lime-500 */
+    --accent-hover: 163 230 53; /* lime-400 */
+  }
+
+  /* Blue Theme */
+  .theme-blue {
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
+    --accent-color: 59 130 246; /* blue-500 */
+    --accent-hover: 96 165 250; /* blue-400 */
+  }
+
+  /* Purple Theme */
+  .theme-purple {
+    --background: 24 24 27;
+    --foreground: 250 250 250;
+    --card: 39 39 42;
+    --card-foreground: 250 250 250;
+    --accent-color: 168 85 247; /* purple-500 */
+    --accent-hover: 196 181 253; /* purple-400 */
+  }
+
+  /* Green Theme */
+  .theme-green {
+    --background: 5 46 22;
+    --foreground: 240 253 244;
+    --card: 20 83 45;
+    --card-foreground: 240 253 244;
+    --accent-color: 34 197 94; /* green-500 */
+    --accent-hover: 74 222 128; /* green-400 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-600 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-500;
+}
+
+/* Keyboard shortcut styling */
+kbd {
+  @apply inline-flex items-center px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono rounded border border-slate-200 dark:border-slate-700;
+}
+
+/* Loading animation */
+@keyframes pulse-gradient {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-gradient {
+  animation: pulse-gradient 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Sandpack customizations */
+.sp-layout {
+  @apply !border-0;
+}
+
+.sp-code-editor {
+  @apply !font-mono;
+}
+
+.sp-preview-iframe {
+  @apply !rounded-none;
+}
+/* Grid pattern for background */
+.bg-grid-slate-100 {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='m0 .5h32m-32 32v-32'/%3e%3c/svg%3e");
+}
+
+.bg-grid-slate-800 {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.02)'%3e%3cpath d='m0 .5h32m-32 32v-32'/%3e%3c/svg%3e");
+}
+
+/* Sandpack theme customizations */
+.sp-wrapper {
+  @apply !bg-transparent;
+}
+
+.sp-layout {
+  @apply !bg-transparent !border-0;
+}
+
+.sp-code-editor {
+  @apply !bg-white dark:!bg-slate-900;
+}
+
+.sp-preview-container {
+  @apply !bg-white dark:!bg-slate-900;
+}
+
+.sp-console {
+  @apply !bg-slate-900;
+}
+
+.sp-file-explorer {
+  @apply !bg-slate-50 dark:!bg-slate-900;
+}
+
+/* Typewriter effect animations */
+.typewriter-text {
+  background: linear-gradient(
+    90deg,
+    rgb(156 163 175) 0%,
+    rgb(132 204 22) 40%,
+    rgb(156 163 175) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+.typewriter-cursor {
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes blink {
+  0%, 50% { 
+    opacity: 1; 
+  }
+  51%, 100% { 
+    opacity: 0; 
+  }
+}
+
+/* Glass button effect */
+.glass-button {
+  background: rgba(31, 41, 55, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-button:hover {
+  background: rgba(55, 65, 81, 0.4);
+  border-color: rgba(132, 204, 22, 0.5);
+  box-shadow: 
+    0 10px 15px -3px rgba(132, 204, 22, 0.1),
+    0 4px 6px -2px rgba(132, 204, 22, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px) scale(1.05);
+}
